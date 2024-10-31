@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1730360801059",
+    "title": "Migz 's weeding Ceremony",
+    "description": "Migz will get married to Marie.",
+    "date": "2024-11-07",
+    "availableSeats": 899,
+    "bookings": [
+      {
+        "name": "Danielle Skies",
+        "location": "Lisbon"
+      }
+    ]
+  },
+  {
+    "id": "1730368989151",
+    "title": "Lunch",
+    "description": "Meet in the Dinning hall for the lunch",
+    "date": "2024-10-31",
+    "availableSeats": 10,
+    "bookings": [
+      {
+        "name": "Annick",
+        "location": "Nyabihu"
+      }
+    ]
+  }
+]
