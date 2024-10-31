@@ -124,14 +124,14 @@ export function BookEventButton({
       <Dialog open={showForm} onOpenChange={setShowForm}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Book Event</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-black">Book Event</DialogTitle>
+            <DialogDescription className="text-black">
               Please enter your details to book the event.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleBook} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">
+              <label htmlFor="name" className="text-sm text-black font-medium">
                 Name
               </label>
               <Input
@@ -142,7 +142,10 @@ export function BookEventButton({
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="location" className="text-sm font-medium">
+              <label
+                htmlFor="location"
+                className="text-sm text-black font-medium"
+              >
                 Location
               </label>
               <Input
@@ -162,7 +165,7 @@ export function BookEventButton({
       <Dialog open={showTicket} onOpenChange={setShowTicket}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Your Ticket</DialogTitle>
+            <DialogTitle className="text-black">Your Ticket</DialogTitle>
           </DialogHeader>
           <Card>
             <CardHeader>

@@ -48,7 +48,7 @@ export default function AdminDashboard() {
   const handleLogout = async () => {
     const response = await fetch("/api/admin/logout", { method: "POST" });
     if (response.ok) {
-      router.push("/admin/login");
+      router.push("/");
     }
   };
 

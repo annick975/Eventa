@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export const revalidate = 0; // This ensures the page is not cached
+export const revalidate = 0; 
 
 export default async function Home() {
   const events = await getEvents();
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container bg-black mx-auto p-4">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Upcoming Events</h1>
         <Link href="/admin/login">
