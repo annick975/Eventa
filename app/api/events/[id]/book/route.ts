@@ -7,11 +7,19 @@ export async function POST(
 ) {
   const id = params.id
   const body = await request.json()
-  const updatedEvent = bookEvent(id, body)
+  
+  // Pass both the id and the booking details to bookEvent
+  const updatedEvent = bookEvent(id, {
+    name: body.name,
+    location: body.location
+  })
 
   if (updatedEvent) {
     return NextResponse.json(updatedEvent)
   } else {
-    return NextResponse.json({ error: 'No available seats or event not found' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'No available seats or event not found' },
+      { status: 400 }
+    )
   }
 }

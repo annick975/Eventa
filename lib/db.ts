@@ -37,39 +37,14 @@ export function getEvents(): Event[] {
   return readEvents()
 }
 
-export function addEvent(event: Omit<Event, 'id' | 'bookings'>): Event {
-  const events = readEvents()
-  const newEvent = { id: Date.now().toString(), ...event, bookings: [] }
-  events.push(newEvent)
-  writeEvents(events)
-  return newEvent
-}
-
-export function editEvent(id: string, updatedEvent: Omit<Event, 'id' | 'bookings'>): Event | null {
-  const events = readEvents()
-  const index = events.findIndex(event => event.id === id)
-  if (index === -1) return null
-  
-  events[index] = { ...events[index], ...updatedEvent, bookings: events[index].bookings || [] }
-  writeEvents(events)
-  return events[index]
-}
-
-export function deleteEvent(id: string): boolean {
-  const events = readEvents()
-  const filteredEvents = events.filter(event => event.id !== id)
-  if (filteredEvents.length === events.length) return false
-  
-  writeEvents(filteredEvents)
-  return true
-}
-
 export function bookEvent(id: string, booking: Booking): Event | null {
   const events = readEvents()
   const eventIndex = events.findIndex(event => event.id === id)
+  
   if (eventIndex === -1 || events[eventIndex].availableSeats === 0) {
     return null
   }
+  
   events[eventIndex].availableSeats--
   events[eventIndex].bookings = events[eventIndex].bookings || []
   events[eventIndex].bookings.push(booking)
@@ -80,6 +55,7 @@ export function bookEvent(id: string, booking: Booking): Event | null {
 export function cancelBooking(eventId: string, name: string): Event | null {
   const events = readEvents()
   const eventIndex = events.findIndex(event => event.id === eventId)
+  
   if (eventIndex === -1) return null
 
   const bookingIndex = events[eventIndex].bookings?.findIndex(booking => booking.name === name)
