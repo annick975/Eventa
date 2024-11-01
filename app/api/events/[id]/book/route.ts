@@ -8,7 +8,7 @@ export async function POST(
   const id = params.id
   const body = await request.json()
 
-  // Ensure the function is awaited, assuming it’s async
+  
   const updatedEvent = await bookEvent(id, body)
 
   if (updatedEvent) {
