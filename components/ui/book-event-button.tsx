@@ -138,6 +138,7 @@ export function BookEventButton({
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                className="text-black"
                 required
               />
             </div>
@@ -152,6 +153,7 @@ export function BookEventButton({
                 id="location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
+                className="text-black"
                 required
               />
             </div>
