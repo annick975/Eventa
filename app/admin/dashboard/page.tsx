@@ -84,41 +84,45 @@ export default function AdminDashboard() {
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-4">Current Events</h2>
-          <div className="space-y-4">
-            {events.map((event) => (
-              <Card key={event.id}>
-                <CardHeader>
-                  <CardTitle>{event.title}</CardTitle>
-                  <CardDescription>{event.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Date: {event.date}</p>
-                  <p>Available Seats: {event.availableSeats}</p>
-                  <h3 className="font-semibold mt-4">Bookings:</h3>
-                  {event.bookings && event.bookings.length > 0 ? (
-                    <ul className="list-disc pl-5">
-                      {event.bookings.map((booking, index) => (
-                        <li key={index}>
-                          {booking.name} - {booking.location}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>No bookings yet.</p>
-                  )}
-                </CardContent>
-                <CardFooter className="space-x-2">
-                  <Button onClick={() => setEditingEvent(event)}>Edit</Button>
-                  <Button
-                    variant="destructive"
-                    onClick={() => handleDelete(event.id)}
-                  >
-                    Delete
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+          {events.length === 0 ? (
+            <p className="text-lg text-gray-600">No events added yet.</p>
+          ) : (
+            <div className="space-y-4">
+              {events.map((event) => (
+                <Card key={event.id}>
+                  <CardHeader>
+                    <CardTitle>{event.title}</CardTitle>
+                    <CardDescription>{event.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Date: {event.date}</p>
+                    <p>Available Seats: {event.availableSeats}</p>
+                    <h3 className="font-semibold mt-4">Bookings:</h3>
+                    {event.bookings && event.bookings.length > 0 ? (
+                      <ul className="list-disc pl-5">
+                        {event.bookings.map((booking, index) => (
+                          <li key={index}>
+                            {booking.name} - {booking.location}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No bookings yet.</p>
+                    )}
+                  </CardContent>
+                  <CardFooter className="space-x-2">
+                    <Button onClick={() => setEditingEvent(event)}>Edit</Button>
+                    <Button
+                      variant="destructive"
+                      onClick={() => handleDelete(event.id)}
+                    >
+                      Delete
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
