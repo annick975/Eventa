@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "1730480117945",
+    "title": "fghjkl",
+    "description": "fdghjkl",
+    "date": "2024-11-14",
+    "availableSeats": 345,
+    "bookings": [
+      {
+        "name": "John The Ripper",
+        "location": "Kali"
+      }
+    ]
+  }
+]

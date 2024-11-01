@@ -7,7 +7,9 @@ export async function POST(
 ) {
   const id = params.id
   const body = await request.json()
-  const updatedEvent = bookEvent(id, body)
+
+  // Ensure the function is awaited, assuming it’s async
+  const updatedEvent = await bookEvent(id, body)
 
   if (updatedEvent) {
     return NextResponse.json(updatedEvent)
