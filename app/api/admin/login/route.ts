@@ -1,11 +1,21 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+const ADMIN_USERNAME = 'admin'
+const ADMIN_PASSWORD = 'password123'
 
 export async function POST(request: Request) {
   const body = await request.json()
-  
-  if (body.username === 'admin' && body.password === 'admin') {
-    return NextResponse.json({ success: true })
+  const { username, password } = body
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    const response = NextResponse.json({ message: 'Login successful' })
+    response.cookies.set('adminLoggedIn', 'true', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 3600 // 1 hour
+    })
+    return response
+  } else {
+    return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 })
   }
-  
-  return NextResponse.json({ success: false }, { status: 401 })
 }
